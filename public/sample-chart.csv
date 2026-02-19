@@ -1,0 +1,6 @@
+Claim Element,Product Feature,Evidence
+"A method for processing digital images comprising:","Device Image Processing Pipeline","Samsung Galaxy S24 Technical Documentation, Section 3.2"
+"receiving an input image from a sensor;","Camera ISP receives raw Bayer data from the CMOS sensor","Teardown Report (iFixit, 2024) showing Sony IMX890 sensor connected to Qualcomm Spectra ISP"
+"applying a noise reduction algorithm to the input image;","Temporal and spatial noise reduction in the ISP pipeline","Patent: US 10,234,567 describing Qualcomm's AI-NR algorithm; SDK documentation"
+"generating an enhanced output image based on the noise-reduced image;","HDR+ processing produces the final enhanced image","Google Camera app documentation; comparison samples showing before/after enhancement"
+"wherein the noise reduction algorithm uses a neural network trained on paired noisy/clean image data.","Qualcomm AI Engine runs a trained DNN model for denoising",""
