@@ -8,7 +8,7 @@ export function AppLayout() {
       <Panel defaultSize={40} minSize={25}>
         <ChatPanel />
       </Panel>
-      <Separator className="w-1.5 bg-slate-200 hover:bg-primary-300 transition-colors cursor-col-resize" />
+      <Separator className="w-1 bg-slate-200/60 hover:bg-primary-400 transition-all duration-200 cursor-col-resize hover:w-1.5" />
       <Panel defaultSize={60} minSize={30}>
         <ClaimChart />
       </Panel>

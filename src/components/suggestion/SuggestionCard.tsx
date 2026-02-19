@@ -1,4 +1,4 @@
-import { Check, X } from 'lucide-react';
+import { Check, X, Lightbulb } from 'lucide-react';
 import { clsx } from 'clsx';
 import type { AISuggestion } from '../../types';
 import { useChartStore } from '../../stores/chartStore';
@@ -23,18 +23,21 @@ export function SuggestionCard({ suggestion }: SuggestionCardProps) {
   return (
     <div
       className={clsx(
-        'ml-9 mt-2 rounded-lg border p-3',
+        'ml-9 mt-2 rounded-xl border p-3.5 shadow-sm animate-fade-in',
         isPending
-          ? 'border-primary-200 bg-primary-50/50'
+          ? 'border-primary-200/80 bg-gradient-to-br from-primary-50/60 to-white'
           : suggestion.status === 'accepted'
-            ? 'border-green-200 bg-green-50/30'
-            : 'border-slate-200 bg-slate-50/50'
+            ? 'border-green-200/80 bg-gradient-to-br from-green-50/40 to-white'
+            : 'border-slate-200/80 bg-gradient-to-br from-slate-50/60 to-white'
       )}
     >
       <div className="flex items-center justify-between mb-2">
         <div className="flex items-center gap-2">
+          <div className="w-5 h-5 rounded-md bg-amber-100 flex items-center justify-center">
+            <Lightbulb size={11} className="text-amber-600" />
+          </div>
           <span className="text-xs font-semibold text-slate-700">
-            Suggestion for Element #{elementIndex + 1}
+            Element #{elementIndex + 1}
           </span>
           {element && (
             <span className="text-xs text-slate-400">
@@ -50,24 +53,24 @@ export function SuggestionCard({ suggestion }: SuggestionCardProps) {
         )}
       </div>
 
-      <p className="text-xs text-slate-600 mb-3 italic">{suggestion.reasoning}</p>
+      <p className="text-xs text-slate-500 mb-3 italic leading-relaxed">{suggestion.reasoning}</p>
 
       <DiffView changes={suggestion.changes} />
 
       {isPending && (
-        <div className="flex gap-2 mt-3">
+        <div className="flex gap-2 mt-3 pt-3 border-t border-slate-100">
           <button
             onClick={() => acceptSuggestion(suggestion)}
-            className="flex items-center gap-1 px-3 py-1.5 rounded-md bg-green-600 text-white text-xs font-medium hover:bg-green-700 transition-colors"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-green-600 to-green-700 text-white text-xs font-medium hover:from-green-700 hover:to-green-800 transition-all shadow-sm hover:shadow-md"
           >
-            <Check size={14} />
+            <Check size={13} />
             Accept
           </button>
           <button
             onClick={() => rejectSuggestion(suggestion)}
-            className="flex items-center gap-1 px-3 py-1.5 rounded-md border border-red-300 text-red-600 text-xs font-medium hover:bg-red-50 transition-colors"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border border-slate-200 text-slate-600 text-xs font-medium hover:bg-slate-50 hover:border-slate-300 transition-all"
           >
-            <X size={14} />
+            <X size={13} />
             Reject
           </button>
         </div>

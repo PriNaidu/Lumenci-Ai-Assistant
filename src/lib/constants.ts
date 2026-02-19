@@ -1,5 +1,4 @@
-export const API_URL = 'https://api.anthropic.com/v1/messages';
-export const AI_MODEL = 'claude-sonnet-4-5-20250929';
+export const AI_MODEL = 'llama-3.3-70b-versatile';
 export const AI_TEMPERATURE = 0.3;
 export const MAX_UNDO_STACK = 50;
 export const MAX_HISTORY_MESSAGES = 10;
