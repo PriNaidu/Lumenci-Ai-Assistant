@@ -8,7 +8,7 @@ interface ChartCardProps {
   index: number;
 }
 
-export function ChartCard({ element, index }: ChartCardProps) {
+export function ChartCard({ element }: ChartCardProps) {
   const selectedElementId = useChartStore((s) => s.selectedElementId);
   const highlightedElementIds = useChartStore((s) => s.highlightedElementIds);
   const selectElement = useChartStore((s) => s.selectElement);
