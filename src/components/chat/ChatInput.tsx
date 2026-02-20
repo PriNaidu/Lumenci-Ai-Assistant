@@ -27,7 +27,7 @@ export function ChatInput() {
   const submitMessage = useChatSubmit();
 
   const userMessages = messages.filter((m) => m.role === 'user');
-  const showSuggestions = !isLoading && userMessages.length === 0;
+  const showSuggestions = !isLoading && (userMessages.length === 0 || !!selectedElementId);
   const suggestions = selectedElementId ? ELEMENT_SUGGESTIONS : GENERAL_SUGGESTIONS;
 
   useEffect(() => {
