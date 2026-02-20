@@ -20,6 +20,8 @@ export function ChartRow({ element, index }: ChartRowProps) {
   const hasGap = evidenceGaps.some(
     (g) => g.elementId === element.id && !g.resolved
   );
+  const hasEvidence = element.evidence && element.evidence.trim() !== '';
+  const isStrong = hasEvidence && !hasGap;
 
   function handleClick() {
     selectElement(isSelected ? null : element.id);
@@ -56,6 +58,24 @@ export function ChartRow({ element, index }: ChartRowProps) {
           )}
           {hasGap && <Badge variant="warning">Gap</Badge>}
         </div>
+      </td>
+      <td className="px-4 py-3.5 align-top">
+        <span
+          className={clsx(
+            'inline-flex items-center gap-1.5 text-[11px] font-semibold px-2.5 py-1 rounded-md',
+            isStrong
+              ? 'bg-green-100 text-green-700'
+              : 'bg-amber-100 text-amber-700'
+          )}
+        >
+          <span
+            className={clsx(
+              'w-1.5 h-1.5 rounded-full',
+              isStrong ? 'bg-green-500' : 'bg-amber-400'
+            )}
+          />
+          {isStrong ? 'Strong' : 'Weak'}
+        </span>
       </td>
     </tr>
   );

@@ -26,7 +26,8 @@ export function ChatInput() {
   const selectedElementId = useChartStore((s) => s.selectedElementId);
   const submitMessage = useChatSubmit();
 
-  const showSuggestions = !isLoading && messages.length <= 1;
+  const userMessages = messages.filter((m) => m.role === 'user');
+  const showSuggestions = !isLoading && userMessages.length === 0;
   const suggestions = selectedElementId ? ELEMENT_SUGGESTIONS : GENERAL_SUGGESTIONS;
 
   useEffect(() => {
